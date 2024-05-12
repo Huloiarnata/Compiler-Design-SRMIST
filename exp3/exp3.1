@@ -1,0 +1,46 @@
+%{
+#include<stdio.h>
+%}
+
+%%
+
+"if"    { printf("keyword if\n"); }
+"else"  { printf("keyword else\n"); }
+"then"  { printf("keyword then\n"); }
+"do"    { printf("keyword do\n"); }
+"for"   { printf("keyword for\n"); }
+"while" { printf("keyword while\n"); }
+
+">"     { printf("Relop >\n"); }
+"<"     { printf("Relop <\n"); }
+">="    { printf("Relop >=\n"); }
+"<="    { printf("Relop <=\n"); }
+"=="    { printf("Relop ==\n"); }
+"!="    { printf("Relop !=\n"); }
+
+"="     { printf("Assignment Operator =\n"); }
+
+"+"     { printf("Arithmetic Operator +\n"); }
+"-"     { printf("Arithmetic Operator -\n"); }
+"*"     { printf("Arithmetic Operator *\n"); }
+"/"     { printf("Arithmetic Operator /\n"); }
+"++"    { printf("Arithmetic Operator ++\n"); }
+"--"    { printf("Arithmetic Operator --\n"); }
+
+"("     { printf("left parenthesis\n"); }
+")"     { printf("right parenthesis\n"); }
+"{"     { printf("left curly braces\n"); }
+"}"     { printf("right curly braces\n"); }
+";"     { printf("semicolon\n"); }
+
+[[:alpha:]_][[:alnum:]_]*   { printf("Identifier: %s\n", yytext); }
+[[:digit:].]+                { printf("Number: %s\n", yytext); } 
+[[:space:]]*                 /* Ignore whitespace */
+
+%%
+
+int main(){
+    yylex();
+    return 0;
+}
+

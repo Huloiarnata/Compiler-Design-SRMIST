@@ -1,0 +1,11 @@
+%{
+#include<stdio.h>
+#include "parser.tab.h"
+%}
+%option noyywrap
+
+%%
+[0-9]+ {yylval.num = atoi(yytext); return NUMBER;}
+\n {return 0;}
+. {return yytext[0];}
+%%
